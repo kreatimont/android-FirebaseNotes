@@ -7,19 +7,42 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import io.kreatimont.firebasenotes.R;
 import io.kreatimont.firebasenotes.model.Note;
+import io.kreatimont.firebasenotes.utils.DateFormatter;
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
 
-    private List<Note> dataList;
+    private List<Note> mDataList;
+    private HashMap<String, Integer> userHasColor;
+    private List<Integer> userColors;
     private Context mContext;
+    private int userCounter = 0;
 
     public NoteAdapter(Context context, List<Note> data) {
-        this.dataList = data;
+        this.mDataList = data;
         this.mContext = context;
+
+        userHasColor = new HashMap<>();
+        fullUserColorsList();
+    }
+
+    private void fullUserColorsList() {
+        userColors = new ArrayList<>();
+        this.userColors.add(R.color.user1);
+        this.userColors.add(R.color.user2);
+        this.userColors.add(R.color.user3);
+        this.userColors.add(R.color.user4);
+        this.userColors.add(R.color.user5);
+        this.userColors.add(R.color.user6);
+        this.userColors.add(R.color.user7);
+        this.userColors.add(R.color.user8);
+        this.userColors.add(R.color.user9);
     }
 
     @Override
@@ -30,29 +53,45 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.bind(dataList.get(position));
+        holder.bind(mDataList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return dataList.size();
+        return mDataList.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView title, message, timestamp;
+        private TextView mTitleLable, mMessageLabel, mDateLabel;
+        private CircleImageView mCircleImageView;
 
         ViewHolder(View itemView) {
             super(itemView);
-            title = (TextView)itemView.findViewById(R.id.title);
-            message = (TextView) itemView.findViewById(R.id.message);
-            timestamp = (TextView) itemView.findViewById(R.id.timestamp);
+            mTitleLable = (TextView)itemView.findViewById(R.id.title);
+            mMessageLabel = (TextView) itemView.findViewById(R.id.message);
+            mDateLabel = (TextView) itemView.findViewById(R.id.timestamp);
+            mCircleImageView = (CircleImageView) itemView.findViewById(R.id.userCircle);
         }
 
         void bind(final Note note) {
-            title.setText(note.getTitle());
-            message.setText(note.getMessage());
-            timestamp.setText(note.getTimestamp().toString());
+
+            for (Note item : mDataList) {
+                if (!userHasColor.containsKey(item.getUserId())) {
+                    userHasColor.put(item.getUserId(),userColors.get(userCounter));
+                    if (userCounter == 8) {
+                        userCounter = 0;
+                    } else {
+                        userCounter++;
+                    }
+
+                }
+            }
+
+            mTitleLable.setText(note.getTitle());
+            mMessageLabel.setText(note.getMessage());
+            mDateLabel.setText(DateFormatter.instance.convertDateToString(note.getTimestamp()));
+            mCircleImageView.setImageResource(userHasColor.get(note.getUserId()));
         }
     }
 
