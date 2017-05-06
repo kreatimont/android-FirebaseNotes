@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "273438365505",
+    "firebase_url": "https://fir-notes-8a95d.firebaseio.com",
+    "project_id": "fir-notes-8a95d",
+    "storage_bucket": "fir-notes-8a95d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:273438365505:android:7f77d7611fe8ddfa",
+        "android_client_info": {
+          "package_name": "io.kreatimont.firebasenotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "273438365505-bp2ovbnbdlfr8rkf7uqcigpoudtr78d2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbpa0xCAwz8bCTbPn4Oa7EdBmuof8cPxI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
