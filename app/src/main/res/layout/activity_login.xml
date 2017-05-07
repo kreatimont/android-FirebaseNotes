@@ -16,9 +16,10 @@
         android:gravity="center">
 
         <TextView
+            android:textColor="@color/colorPrimaryDark"
             android:layout_margin="4dp"
             android:gravity="center"
-            android:text="Welcome!"
+            android:text="Join ^_^"
             android:textSize="22sp"
             android:textStyle="bold"
             android:layout_width="match_parent"
@@ -26,9 +27,9 @@
 
         <ImageView
             android:layout_margin="8dp"
-            android:background="@drawable/logo"
-            android:layout_width="match_parent"
-            android:layout_height="180dp" />
+            android:background="@drawable/icon"
+            android:layout_width="80dp"
+            android:layout_height="80dp" />
 
         <EditText
             android:id="@+id/loginEmail"
@@ -65,7 +66,6 @@
                 android:text="Sign up"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
 
         </LinearLayout>
 

@@ -98,7 +98,10 @@ public class PostNoteActivity extends AppCompatActivity {
 
                 if (databaseError == null) {
                     Toast.makeText(PostNoteActivity.this, "Successfully posted", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(PostNoteActivity.this, ListActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(new Intent(PostNoteActivity.this, ListActivity.class));
+                    finish();
                 } else {
                     Toast.makeText(PostNoteActivity.this, "Note was not posted", Toast.LENGTH_SHORT).show();
                 }

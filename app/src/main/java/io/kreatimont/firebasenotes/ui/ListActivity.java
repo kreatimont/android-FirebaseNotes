@@ -46,7 +46,6 @@ public class ListActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         initUI();
-
         observeDatabase();
     }
 
@@ -85,7 +84,7 @@ public class ListActivity extends AppCompatActivity {
 
         mRecyclerView = (RecyclerView)findViewById(R.id.recycler);
         mAdapter = new NoteAdapter(this, mDataList);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
